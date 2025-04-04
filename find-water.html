@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Greywater | Greywater Sharing Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Greywater Sharing Platform</h1>
+            <p>Reusing Water to Reduce Scarcity</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="list-water.html">List Water</a></li>
+                <li><a href="find-water.html" class="active">Find Water</a></li>
+                <li><a href="tracking.html">Tracking</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="search-water">
+            <h2>Find Greywater Near You</h2>
+            <p>Search for available greywater in your area</p>
+            
+            <div class="search-filters">
+                <div class="form-group">
+                    <label for="search-location">Location</label>
+                    <input type="text" id="search-location" placeholder="Enter your city or region">
+                </div>
+                
+                <div class="form-group">
+                    <label for="search-radius">Search Radius (km)</label>
+                    <select id="search-radius">
+                        <option value="5">5 km</option>
+                        <option value="10" selected>10 km</option>
+                        <option value="20">20 km</option>
+                        <option value="50">50 km</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="water-type">Water Type</label>
+                    <select id="water-type">
+                        <option value="all">All Types</option>
+                        <option value="filtered">Filtered Only</option>
+                        <option value="unfiltered">Unfiltered</option>
+                    </select>
+                </div>
+                
+                <button id="search-btn" class="btn">Search</button>
+            </div>
+            
+            <div class="search-results">
+                <h3>Available Greywater in Beirut</h3>
+                <div class="result-list">
+                    <!-- Sample results - these would be dynamically generated in a real app -->
+                    <div class="water-card">
+                        <h4>Shower & Sink Water</h4>
+                        <p><strong>Amount:</strong> 200 liters</p>
+                        <p><strong>Location:</strong> Hamra, Beirut (1.2 km away)</p>
+                        <p><strong>Status:</strong> Filtered</p>
+                        <p><strong>Available:</strong> Weekly</p>
+                        <button class="btn secondary request-btn">Request This Water</button>
+                    </div>
+                    
+                    <div class="water-card">
+                        <h4>Laundry Water</h4>
+                        <p><strong>Amount:</strong> 500 liters</p>
+                        <p><strong>Location:</strong> Ashrafieh, Beirut (3.5 km away)</p>
+                        <p><strong>Status:</strong> Unfiltered</p>
+                        <p><strong>Available:</strong> Monthly</p>
+                        <button class="btn secondary request-btn">Request This Water</button>
+                    </div>
+                    
+                    <div class="water-card">
+                        <h4>Kitchen Sink Water</h4>
+                        <p><strong>Amount:</strong> 50 liters</p>
+                        <p><strong>Location:</strong> Verdun, Beirut (2.1 km away)</p>
+                        <p><strong>Status:</strong> Filtered</p>
+                        <p><strong>Available:</strong> Daily</p>
+                        <button class="btn secondary request-btn">Request This Water</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="request-modal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>Request Greywater</h3>
+                    <form id="request-form">
+                        <div class="form-group">
+                            <label for="request-amount">Amount Needed (liters)</label>
+                            <input type="number" id="request-amount" name="request-amount" min="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="request-date">Preferred Pickup Date</label>
+                            <input type="date" id="request-date" name="request-date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="request-message">Message to Provider</label>
+                            <textarea id="request-message" name="request-message" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Request</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="request-success" class="hidden">
+                <h3>✅ Request Sent!</h3>
+                <p>Your greywater request has been sent to the provider. They will contact you to arrange details.</p>
+                <a href="find-water.html" class="btn">Find More Water</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Greywater Sharing Platform</p>
+            <p>Helping Lebanon's water security</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

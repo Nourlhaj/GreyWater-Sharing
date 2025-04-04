@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Greywater | Greywater Sharing Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Greywater Sharing Platform</h1>
+            <p>Reusing Water to Reduce Scarcity</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="list-water.html" class="active">List Water</a></li>
+                <li><a href="find-water.html">Find Water</a></li>
+                <li><a href="tracking.html">Tracking</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="list-water">
+            <h2>List Your Greywater</h2>
+            <p>Share details about the greywater you have available</p>
+            
+            <form id="waterListingForm">
+                <div class="form-group">
+                    <label for="water-source">Water Source</label>
+                    <select id="water-source" name="water-source" required>
+                        <option value="">Select source</option>
+                        <option value="shower">Shower</option>
+                        <option value="sink">Sink</option>
+                        <option value="washing-machine">Washing Machine</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="water-amount">Amount Available (liters)</label>
+                    <input type="number" id="water-amount" name="water-amount" min="1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="filter-status">Filter Status</label>
+                    <select id="filter-status" name="filter-status" required>
+                        <option value="">Select filter status</option>
+                        <option value="filtered">Filtered (ready to use)</option>
+                        <option value="unfiltered">Unfiltered (needs treatment)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="availability">Availability</label>
+                    <select id="availability" name="availability" required>
+                        <option value="">Select availability</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="one-time">One-time</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pickup-options">Pickup Options</label>
+                    <select id="pickup-options" name="pickup-options" required>
+                        <option value="">Select pickup option</option>
+                        <option value="self-pickup">Self pickup only</option>
+                        <option value="can-deliver">Can deliver locally</option>
+                        <option value="arrange-delivery">Can arrange delivery</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Additional Notes</label>
+                    <textarea id="notes" name="notes" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">List My Greywater</button>
+            </form>
+            
+            <div id="listing-success" class="hidden">
+                <h3>✅ Listing Created!</h3>
+                <p>Your greywater listing has been published. People in your area can now find and request it.</p>
+                <a href="find-water.html" class="btn">Browse Other Listings</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Greywater Sharing Platform</p>
+            <p>Helping Lebanon's water security</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

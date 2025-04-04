@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Tracking | Greywater Sharing Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Greywater Sharing Platform</h1>
+            <p>Reusing Water to Reduce Scarcity</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="list-water.html">List Water</a></li>
+                <li><a href="find-water.html">Find Water</a></li>
+                <li><a href="tracking.html" class="active">Tracking</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="water-tracking">
+            <h2>Water Tracking & Impact</h2>
+            <p>See how much water you've shared or received and your environmental impact</p>
+
+            <div class="tracking-stats">
+                <div class="stat-card">
+                    <h3>Total Water Shared</h3>
+                    <p class="stat-value">1,250 <span>liters</span></p>
+                    <p class="stat-change">+200 this month</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Total Water Received</h3>
+                    <p class="stat-value">800 <span>liters</span></p>
+                    <p class="stat-change">+150 this month</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Water Saved From Waste</h3>
+                    <p class="stat-value">2,050 <span>liters</span></p>
+                    <p class="stat-change">Total all-time</p>
+                </div>
+            </div>
+
+            <div class="tracking-charts">
+                <h3>Your Water Sharing History</h3>
+                <div class="chart-container">
+                    <canvas id="waterChart"></canvas>
+                </div>
+
+                <div class="time-filters">
+                    <button class="time-filter active" data-period="week">Week</button>
+                    <button class="time-filter" data-period="month">Month</button>
+                    <button class="time-filter" data-period="year">Year</button>
+                    <button class="time-filter" data-period="all">All Time</button>
+                </div>
+            </div>
+
+            <div class="impact-section">
+                <h3>Your Environmental Impact</h3>
+                <div class="impact-facts">
+                    <div class="impact-card">
+                        <p>Your water sharing has helped save approximately:</p>
+                        <p class="impact-value">4,100 <span>liters of fresh water</span></p>
+                    </div>
+
+                    <div class="impact-card">
+                        <p>Equivalent to the daily water needs of:</p>
+                        <p class="impact-value">5 <span>people</span></p>
+                    </div>
+
+                    <div class="impact-card">
+                        <p>Energy saved from water treatment:</p>
+                        <p class="impact-value">85 <span>kWh</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaderboard">
+                <h3>Top Water Savers in Your Area</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Water Shared</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Green Home Beirut</td>
+                            <td>5,200 L</td>
+                            <td>Beirut</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Eco Laundry</td>
+                            <td>4,800 L</td>
+                            <td>Jounieh</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>You</td>
+                            <td>1,250 L</td>
+                            <td>Beirut</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Urban Farm</td>
+                            <td>950 L</td>
+                            <td>Saida</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Beach Resort</td>
+                            <td>800 L</td>
+                            <td>Byblos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Greywater Sharing Platform</p>
+            <p>Helping Lebanon's water security</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
