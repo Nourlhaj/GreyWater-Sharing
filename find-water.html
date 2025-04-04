@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Greywater | Greywater Sharing Platform</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -30,13 +32,13 @@
         <section class="search-water">
             <h2>Find Greywater Near You</h2>
             <p>Search for available greywater in your area</p>
-            
+
             <div class="search-filters">
                 <div class="form-group">
                     <label for="search-location">Location</label>
-                    <input type="text" id="search-location" placeholder="Enter your city or region">
+                    <input type="text" id="search-location" placeholder="Enter your city or region" value="Beirut">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="search-radius">Search Radius (km)</label>
                     <select id="search-radius">
@@ -46,7 +48,7 @@
                         <option value="50">50 km</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="water-type">Water Type</label>
                     <select id="water-type">
@@ -55,43 +57,17 @@
                         <option value="unfiltered">Unfiltered</option>
                     </select>
                 </div>
-                
+
                 <button id="search-btn" class="btn">Search</button>
             </div>
-            
+
             <div class="search-results">
                 <h3>Available Greywater in Beirut</h3>
-                <div class="result-list">
-                    <!-- Sample results - these would be dynamically generated in a real app -->
-                    <div class="water-card">
-                        <h4>Shower & Sink Water</h4>
-                        <p><strong>Amount:</strong> 200 liters</p>
-                        <p><strong>Location:</strong> Hamra, Beirut (1.2 km away)</p>
-                        <p><strong>Status:</strong> Filtered</p>
-                        <p><strong>Available:</strong> Weekly</p>
-                        <button class="btn secondary request-btn">Request This Water</button>
-                    </div>
-                    
-                    <div class="water-card">
-                        <h4>Laundry Water</h4>
-                        <p><strong>Amount:</strong> 500 liters</p>
-                        <p><strong>Location:</strong> Ashrafieh, Beirut (3.5 km away)</p>
-                        <p><strong>Status:</strong> Unfiltered</p>
-                        <p><strong>Available:</strong> Monthly</p>
-                        <button class="btn secondary request-btn">Request This Water</button>
-                    </div>
-                    
-                    <div class="water-card">
-                        <h4>Kitchen Sink Water</h4>
-                        <p><strong>Amount:</strong> 50 liters</p>
-                        <p><strong>Location:</strong> Verdun, Beirut (2.1 km away)</p>
-                        <p><strong>Status:</strong> Filtered</p>
-                        <p><strong>Available:</strong> Daily</p>
-                        <button class="btn secondary request-btn">Request This Water</button>
-                    </div>
+                <div class="result-list" id="water-listings">
+                    <!-- Example listings will be inserted here by JavaScript -->
                 </div>
             </div>
-            
+
             <div id="request-modal" class="modal hidden">
                 <div class="modal-content">
                     <span class="close-modal">&times;</span>
@@ -101,22 +77,22 @@
                             <label for="request-amount">Amount Needed (liters)</label>
                             <input type="number" id="request-amount" name="request-amount" min="1" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="request-date">Preferred Pickup Date</label>
                             <input type="date" id="request-date" name="request-date" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="request-message">Message to Provider</label>
                             <textarea id="request-message" name="request-message" rows="4" required></textarea>
                         </div>
-                        
+
                         <button type="submit" class="btn">Send Request</button>
                     </form>
                 </div>
             </div>
-            
+
             <div id="request-success" class="hidden">
                 <h3>✅ Request Sent!</h3>
                 <p>Your greywater request has been sent to the provider. They will contact you to arrange details.</p>
@@ -132,6 +108,164 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Load example listings when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            const waterListings = document.getElementById('water-listings');
+
+            // Example listings data
+            const exampleListings = [
+                {
+                    id: '1',
+                    title: 'Shower & Sink Water',
+                    distance: '1.2 km away',
+                    amount: '200 liters',
+                    location: 'Hamra, Beirut',
+                    source: 'Residential building',
+                    status: 'filtered',
+                    availability: 'Weekly',
+                    pickup: 'Self-service or can deliver',
+                    notes: ''
+                },
+                {
+                    id: '2',
+                    title: 'Laundry Water',
+                    distance: '3.5 km away',
+                    amount: '500 liters',
+                    location: 'Ashrafieh, Beirut',
+                    source: 'Eco Laundry business',
+                    status: 'unfiltered',
+                    availability: 'Monthly',
+                    pickup: 'Must arrange transport',
+                    notes: ''
+                },
+                {
+                    id: '3',
+                    title: 'Kitchen Sink Water',
+                    distance: '2.1 km away',
+                    amount: '50 liters daily',
+                    location: 'Verdun, Beirut',
+                    source: 'Vegan restaurant',
+                    status: 'filtered',
+                    availability: 'Daily',
+                    pickup: 'Flexible - morning or evening',
+                    notes: 'Low chemical content, ideal for garden use',
+                    featured: true
+                },
+                {
+                    id: '4',
+                    title: 'Bathroom Water',
+                    distance: '4.2 km away',
+                    amount: '300 liters weekly',
+                    location: 'Manara, Beirut',
+                    source: 'Beach resort',
+                    status: 'filtered',
+                    availability: 'Every Friday',
+                    pickup: 'Must bring containers',
+                    notes: ''
+                }
+            ];
+
+            // Display the example listings
+            if (waterListings) {
+                waterListings.innerHTML = exampleListings.map(listing => `
+                    <div class="water-card ${listing.featured ? 'highlighted' : ''}">
+                        <div class="water-card-header">
+                            <h4>${listing.title}</h4>
+                            <span class="distance-badge">${listing.distance}</span>
+                            ${listing.featured ? '<span class="featured-badge">Featured</span>' : ''}
+                        </div>
+                        <div class="water-card-details">
+                            <p><strong>Amount:</strong> ${listing.amount}</p>
+                            <p><strong>Location:</strong> ${listing.location}</p>
+                            <p><strong>Source:</strong> ${listing.source}</p>
+                            <p><strong>Status:</strong> <span class="${listing.status}-badge">${listing.status === 'filtered' ? 'Filtered' : 'Unfiltered'}</span></p>
+                            <p><strong>Available:</strong> ${listing.availability}</p>
+                            <p><strong>Pickup:</strong> ${listing.pickup}</p>
+                            ${listing.notes ? `<p class="water-notes"><strong>Notes:</strong> ${listing.notes}</p>` : ''}
+                        </div>
+                        <div class="water-card-footer">
+                            <button class="btn secondary request-btn" data-id="${listing.id}">Request This Water</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Set up request buttons
+            const requestButtons = document.querySelectorAll('.request-btn');
+            requestButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    document.getElementById('request-modal').classList.remove('hidden');
+                });
+            });
+
+            // Close modal
+            const closeModal = document.querySelector('.close-modal');
+            if (closeModal) {
+                closeModal.addEventListener('click', function () {
+                    document.getElementById('request-modal').classList.add('hidden');
+                });
+            }
+
+            // Handle form submission
+            const requestForm = document.getElementById('request-form');
+            if (requestForm) {
+                requestForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    document.getElementById('request-modal').classList.add('hidden');
+                    document.getElementById('request-success').classList.remove('hidden');
+                });
+            }
+
+            // Search button functionality
+            const searchBtn = document.getElementById('search-btn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function () {
+                    const location = document.getElementById('search-location').value;
+                    const radius = document.getElementById('search-radius').value;
+                    const waterType = document.getElementById('water-type').value;
+
+                    // Simple filter simulation
+                    const filteredListings = exampleListings.filter(listing => {
+                        const matchesLocation = listing.location.toLowerCase().includes(location.toLowerCase());
+                        const matchesType = waterType === 'all' ||
+                            (waterType === 'filtered' && listing.status === 'filtered') ||
+                            (waterType === 'unfiltered' && listing.status === 'unfiltered');
+                        return matchesLocation && matchesType;
+                    });
+
+                    // Update displayed listings
+                    if (waterListings) {
+                        if (filteredListings.length > 0) {
+                            waterListings.innerHTML = filteredListings.map(listing => `
+                                <div class="water-card ${listing.featured ? 'highlighted' : ''}">
+                                    <div class="water-card-header">
+                                        <h4>${listing.title}</h4>
+                                        <span class="distance-badge">${listing.distance}</span>
+                                        ${listing.featured ? '<span class="featured-badge">Featured</span>' : ''}
+                                    </div>
+                                    <div class="water-card-details">
+                                        <p><strong>Amount:</strong> ${listing.amount}</p>
+                                        <p><strong>Location:</strong> ${listing.location}</p>
+                                        <p><strong>Source:</strong> ${listing.source}</p>
+                                        <p><strong>Status:</strong> <span class="${listing.status}-badge">${listing.status === 'filtered' ? 'Filtered' : 'Unfiltered'}</span></p>
+                                        <p><strong>Available:</strong> ${listing.availability}</p>
+                                        <p><strong>Pickup:</strong> ${listing.pickup}</p>
+                                        ${listing.notes ? `<p class="water-notes"><strong>Notes:</strong> ${listing.notes}</p>` : ''}
+                                    </div>
+                                    <div class="water-card-footer">
+                                        <button class="btn secondary request-btn" data-id="${listing.id}">Request This Water</button>
+                                    </div>
+                                </div>
+                            `).join('');
+                        } else {
+                            waterListings.innerHTML = '<p class="no-results">No matching results found. Try adjusting your search filters.</p>';
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>

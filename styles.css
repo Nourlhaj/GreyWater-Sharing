@@ -451,3 +451,145 @@ footer {
         margin: 5px 0;
     }
 }
+
+/* Find Water Page Specific Styles */
+.water-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+
+    transition: transform 0.3s ease;
+}
+
+.water-card:hover {
+    transform: translateY(-5px);
+}
+
+.water-card.highlighted {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.water-card-header {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.water-card-header h4 {
+    margin: 0;
+    color: var(--dark-color);
+}
+
+.water-card-details {
+    padding: 20px;
+}
+
+.water-card-details p {
+    margin-bottom: 8px;
+}
+
+.water-card-footer {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.distance-badge {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.featured-badge {
+    background-color: var(--warning-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.filtered-badge {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.unfiltered-badge {
+    background-color: var(--warning-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.water-notes {
+    padding: 10px;
+    background-color: #f0f8ff;
+    border-left: 3px solid var(--primary-color);
+    margin-top: 15px;
+}
+
+.success-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+/* Modal Enhancements */
+.modal-content {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: var(--dark-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .water-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .distance-badge,
+    .featured-badge {
+        margin-top: 5px;
+        margin-left: 0;
+    }
+
+    .success-actions {
+        flex-direction: column;
+    }
+}
